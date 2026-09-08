@@ -26,7 +26,7 @@ The xv6 repository we're using for this course is available on Georgia Tech's
 GitHub:
 
 ```bash
-git clone git@github.gatech.edu:cs3210-spring2024/xv6.git
+git clone git@github.gatech.edu:cs3210-fall2026/xv6.git
 ```
 
 For this lab, we will be using the lab1 branch within git. You may switch to it
@@ -59,8 +59,8 @@ parent and child can share physical data pages, until either writes to memory.
 Lazy zeroing of pages helps reduce the costs of memory allocation, and accessing
 zeroed pages. When new memory is allocated by the kernel (e.g. through `sbrk`),
 that data contained in that memory must logically be zero. (There is a huge
-issue if the data isn't zeroed, can you think it?) However, just because the
-user-space as allocated a page, that doesn't mean they need a true physical
+issue if the data isn't zeroed, can you think of it?) However, just because the
+user-space was allocated a page, that doesn't mean they need a true physical
 page. If a given data page is never accessed by the process, or only read, the
 kernel need not allocate a unique page for it. Instead, the kernel may point
 all logically zero-filled user-space pages to a single zero-initialized physical
@@ -169,7 +169,7 @@ following design principals you're expected to follow:
 - Zero-filled virtual addresses should be lazily allocated, allocating a
   unique physical page only on write.
 - All zero-initialized virtual pages should share read-only access to a single
-  physical zero-page, that is never written.
+  physical zero-page that is never written.
 - Any write to a zero-initialized page will cause a new physical page to be
   allocated and used in its place.
 
@@ -270,7 +270,7 @@ You are *not* allowed to change the supplied `kernel/src/lab2_ag.c`,
 
 ## Test Case
 
-As this lab is very complex, and its often hard to get a baseline working
+As this lab is very complex, and since it's often hard to get a baseline working
 solution, we've given you a single testcase found in the `ag_test` directory.
 The directory contains:
 
