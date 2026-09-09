@@ -60,7 +60,7 @@ Lazy zeroing of pages helps reduce the costs of memory allocation, and accessing
 zeroed pages. When new memory is allocated by the kernel (e.g. through `sbrk`),
 that data contained in that memory must logically be zero. (There is a huge
 issue if the data isn't zeroed, can you think of it?) However, just because the
-user-space was allocated a page, that doesn't mean they need a true physical
+user-space was allocated a page, doesn't mean they need a true physical
 page. If a given data page is never accessed by the process, or only read, the
 kernel need not allocate a unique page for it. Instead, the kernel may point
 all logically zero-filled user-space pages to a single zero-initialized physical
@@ -124,7 +124,7 @@ lab you'll have to get familiar with both the memory allocation system
 (`kernel/src/vm.c`) is called to allocate a new virtual address space for the
 user process. You may consider how you would like to modify the code here
 first. When you receive a trap (e.g. a pagefault) the trap will be delivered
-through the kernel, eventually to our c trap handler in `trap()`
+through the kernel, eventually to our C trap handler in `trap()`
 (`kernel/src/trap.c`).
 
 Think carefully about your design before you build it.  What structures need
@@ -145,9 +145,9 @@ is the ownership of a physical page? Of a virtual page?
   address space (as resetting cr3 will cause a TLB invalidation on its behalf).
 - If you feel overwhelmed with this lab, don't give up. We have an active
   Piazza, copious office hours and support structures to help you get through
-  this we are willing to help you at all stages of implementation, from
+  this. We are willing to help you at all stages of implementation, from
   understanding the spec to debugging. The hard part of this class is often in
-  a concise design, not in a complex implementation (Our solution modifies under
+  a concise design, not in a complex implementation (our solution modifies under
   300 LOC for this project, but the project isn't by any means easy).
 
 ## Part 2 - Zero Initialized Data
@@ -164,7 +164,7 @@ same physical page.
 
 In this part of the lab, your goal will be to add in zero-initialized data
 deduplication and lazy page zero allocation to your kernel. These are the
-following design principals you're expected to follow:
+following design principles you're expected to follow:
 
 - Zero-filled virtual addresses should be lazily allocated, allocating a
   unique physical page only on write.
@@ -176,7 +176,7 @@ following design principals you're expected to follow:
 ## Specification details
 
 - If the user-space code ever does a load or store of invalid memory (memory
-  it doesn't have logical read or right privledges for) the kernel should kill
+  it doesn't have logical read or write privileges for), the kernel should kill
   the process.
 
 - You are expected to minimize the costs of operations. Operations costs
