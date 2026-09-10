@@ -139,7 +139,7 @@ is the ownership of a physical page? Of a virtual page?
   children, when a parent dies before its child, or when a parent forks a child
   forks a grandchild.
 - When you modify the permissions of a present virtual page in the page-table,
-  you'll have to invalidate the TLB entry for that page, we've provided you a
+  you'll have to invalidate the TLB entry for that page. We've provided you a
   function to do so `invlpg(void *vaddr)` in `include/asm/x86.h`. **NOTE:** you
   don't need to invalidate a page if it isn't present in the current virtual
   address space (as resetting cr3 will cause a TLB invalidation on its behalf).
@@ -189,7 +189,7 @@ following design principles you're expected to follow:
   by exactly one virtual page.
 
 - Your lab should be generally efficient. You may not waste excess memory
-  unnecessarily, or preform particularly computationally inefficient activities
+  unnecessarily, or perform particularly computationally inefficient activities
   (like scanning all page tables of all processes on page fault).
 
 - In `trap.c` kernel preemptive scheduling has been disabled, this is to enable
