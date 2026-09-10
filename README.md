@@ -337,4 +337,4 @@ You may choose to work with a partner. When sharing code with your partner, use 
 [git]: https://www.git-scm.com
 [git-manual]: https://www.kernel.org/pub/software/scm/git/docs/user-manual.html
 [git-article]: https://eagain.net/articles/git-for-computer-scientists/
-[private-fork]: https://github.gatech.edu/pages/cs3210-spring2024/course/wiki/private-fork/
+[private-fork]: https://github.gatech.edu/pages/cs3210-fall2026/course/wiki/private-fork/
